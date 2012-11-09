@@ -917,7 +917,7 @@ namespace Chraft
             if (authClients.Length == 0)
                 return;
 
-            TimeUpdatePacket packet = new TimeUpdatePacket {Time = world.Time};
+            TimeUpdatePacket packet = new TimeUpdatePacket {AgeOfWorld = 0, Time = world.Time};
             packet.SetShared(Logger, authClients.Length);
             Parallel.ForEach(authClients, (client) => client.SendPacket(packet));
         }
@@ -1063,9 +1063,8 @@ namespace Chraft
                     Yaw = item.PackedYaw,
                     Pitch = item.PackedPitch,
                     EntityId = item.EntityId,
-                    ItemId = item.ItemId,
-                    Count = item.Count,
-                    Durability = item.Durability,
+                    //todo - proper slot handling
+                    Slot = item.Durability,
                     Roll = 0
                 };
             }
