@@ -588,7 +588,7 @@ namespace Chraft
                     else
                         packetType = bufferToProcess.GetPacketID();
 
-                    //client.Logger.Log(Chraft.LogLevel.Info, "Reading packet {0}", ((PacketType)packetType).ToString());
+                    //client.Logger.Log(LogLevel.Info, "Reading packet {0}", ((PacketType)packetType).ToString());
 
                     PacketHandler handler = PacketHandlers.GetHandler((PacketType)packetType);
 
@@ -1063,8 +1063,8 @@ namespace Chraft
                     Yaw = item.PackedYaw,
                     Pitch = item.PackedPitch,
                     EntityId = item.EntityId,
-                    //todo - proper slot handling
-                    Slot = item.Durability,
+                    //TODO - proper slot handling
+                    Slot = item,
                     Roll = 0
                 };
             }

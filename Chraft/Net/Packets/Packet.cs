@@ -751,7 +751,7 @@ namespace Chraft.Net.Packets
     public class SpawnItemPacket : Packet
     {
         public int EntityId { get; set; }
-        public short Slot { get; set; }
+        public ItemEntity Slot { get; set; }
         public double X { get; set; }
         public double Y { get; set; }
         public double Z { get; set; }
@@ -759,12 +759,12 @@ namespace Chraft.Net.Packets
         public sbyte Pitch { get; set; }
         public sbyte Roll { get; set; }
 
-        protected override int Length { get { return 20; } }
+
 
         public override void Read(PacketReader stream)
         {
             EntityId = stream.ReadInt();
-            Slot = stream.ReadShort();
+            //Slot = stream.ReadShort();
             X = stream.ReadInt() / 32.0d;
             Y = stream.ReadInt() / 32.0d;
             Z = stream.ReadInt() / 32.0d;
@@ -775,14 +775,20 @@ namespace Chraft.Net.Packets
 
         public override void Write()
         {
-            SetCapacity(20 + Slot);
+            SetCapacity();
             Writer.Write(EntityId);
+            Writer.Write(Slot.ItemId);
+            Writer.Write(Slot.Count);
+            Writer.Write((short)-1);//TODO Damage
+            Writer.Write((short)-1);//TODO Item Metadata
             Writer.Write((int)(X * 32));
             Writer.Write((int)(Y * 32));
             Writer.Write((int)(Z * 32));
             Writer.Write(Yaw);
             Writer.Write(Pitch);
             Writer.Write(Roll);
+            // This is because we don't know the dimension of Data in advance
+            Length = (int)Writer.UnderlyingStream.Length;
         }
     }
 
