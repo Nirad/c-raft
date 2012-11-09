@@ -2346,9 +2346,9 @@ namespace Chraft.Net.Packets
     /// </summary>
     public class ServerListPingPacket : Packet
     {
-        public byte Magic { get; set; }
-
         protected override int Length { get { return 2; } }
+
+        public byte Magic { get; set; }
 
         public override void Read(PacketReader stream)
         {
