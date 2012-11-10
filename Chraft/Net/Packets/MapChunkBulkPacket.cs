@@ -27,9 +27,10 @@ namespace Chraft.Net.Packets
             int totalDataDim = ChunksToSend.Count * 16 * (Section.BYTESIZE + Section.SIZE) + (ChunksToSend.Count * 256);
             byte[] totalData = new byte[totalDataDim];
             int index = 0;
-            foreach(Chunk chunkToSend in ChunksToSend)
+
+            for (int i = 0; i < ChunksToSend.Count();i++ )
             {
-                MapChunkData chunkData = MapChunkPacket.GetMapChunkData(chunkToSend, true);
+                MapChunkData chunkData = MapChunkPacket.GetMapChunkData(ChunksToSend[i], true);
                 _mapChunksData.Enqueue(chunkData);
                 Buffer.BlockCopy(chunkData.Data, 0, totalData, index, chunkData.Data.Length);
                 index += chunkData.Data.Length;
@@ -44,12 +45,12 @@ namespace Chraft.Net.Packets
             Writer.Write(length);
             Writer.Write(compressedData, 0, length);
 
-            foreach (Chunk chunkToSend in ChunksToSend)
+            for (int i = 0; i < ChunksToSend.Count(); i++)
             {
                 MapChunkData chunkData = _mapChunksData.Dequeue();
 
-                Writer.Write(chunkToSend.Coords.ChunkX);
-                Writer.Write(chunkToSend.Coords.ChunkZ);
+                Writer.Write(ChunksToSend[i].Coords.ChunkX);
+                Writer.Write(ChunksToSend[i].Coords.ChunkZ);
                 Writer.Write((short)chunkData.PrimaryBitMask);
                 Writer.Write((short)chunkData.AddBitMask);
             }
