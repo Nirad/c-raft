@@ -236,9 +236,13 @@ namespace Chraft.Interfaces.Recipes
                 // Loop through the row elements
                 foreach (XElement r in rows)
                 {
+
                     // Define variables
                     string value = r.Value;
                     string[] items = value.Split(',');
+
+                    // ToDo Better way ... ReInitialize the ingredients array this thig fix a bug....
+                    ingredients = new ItemInventory[rowCount, items.Length];
 
                     // Loop through the items
                     for (int i = 0; i < items.Length; i++)
