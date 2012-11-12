@@ -46,7 +46,8 @@ namespace Chraft.Interfaces
             var ingredients = new List<ItemInventory>();
             for (short i = 1; i <= this.CraftingSlotCount; i++)
                 ingredients.Add(ItemHelper.IsVoid(this[i]) ? ItemHelper.Void : this[i]);
-            return Recipe.GetRecipe(Server.GetRecipes(), ingredients.ToArray());
+
+            return Recipe.GetRecipe(Server.Recipes, ingredients.ToArray());
         }
 
         internal override void OnClicked(WindowClickPacket packet)
