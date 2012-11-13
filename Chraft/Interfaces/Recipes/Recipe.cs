@@ -230,8 +230,11 @@ namespace Chraft.Interfaces.Recipes
                 var rows = recipe.Descendants("Rows").Descendants("Row");
                 rowCount = rows.Count<XElement>();
 
+                // Load the items array size width TODO Test with crafting table !
+                var itemsCount = recipe.Descendants("Rows").Descendants("Row").FirstOrDefault().Value.Split(',').Count();
+
                 // Initialize the ingredients array
-                ingredients = new ItemInventory[rowCount, 3];
+                ingredients = new ItemInventory[rowCount, itemsCount];
 
                 // Loop through the row elements
                 foreach (XElement r in rows)
