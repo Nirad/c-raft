@@ -116,6 +116,8 @@
     <Compile Include="Entity\Items\Base\ItemPlaceable.cs" />
     <Compile Include="Entity\Items\Base\ItemBaseHoe.cs" />
     <Compile Include="Entity\Items\Base\ItemBaseFood.cs" />
+    <Compile Include="Entity\Items\ItemGoldBlock.cs" />
+    <Compile Include="Entity\Items\ItemWoodenHoe.cs" />
     <Compile Include="Entity\Items\ItemDiamond.cs" />
     <Compile Include="Entity\Items\ItemGoldIngot.cs" />
     <Compile Include="Entity\Items\ItemWorkbench.cs" />
