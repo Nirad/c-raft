@@ -28,15 +28,15 @@
   <Recipe Id="50" Match="Exact">
     <Amount>4</Amount>
     <Rows>
-      <Row>263,0,0</Row>
-      <Row>280,0,0</Row>
+      <Row>263,0</Row>
+      <Row>280,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="58" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>5,5,0</Row>
-      <Row>5,5,0</Row>
+      <Row>5,5</Row>
+      <Row>5,5</Row>
     </Rows>
   </Recipe>
   <Recipe Id="61" Match="Exact">
@@ -66,7 +66,7 @@
   <Recipe Id="266" Match="Exact">
     <Amount>9</Amount>
     <Rows>
-      <Row>41,0,0</Row>
+      <Row>41,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="42" Match="Exact">
@@ -80,7 +80,7 @@
   <Recipe Id="265" Match="Exact">
     <Amount>9</Amount>
     <Rows>
-      <Row>42,0,0</Row>
+      <Row>42,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="22" Match="Exact">
@@ -94,7 +94,7 @@
   <Recipe Id="351:4" Match="Exact">
     <Amount>9</Amount>
     <Rows>
-      <Row>22,0,0</Row>
+      <Row>22,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35" Match="Exact">
@@ -116,7 +116,7 @@
   <Recipe Id="264" Match="Exact">
     <Amount>9</Amount>
     <Rows>
-      <Row>57,0,0</Row>
+      <Row>57,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="89" Match="Exact">
@@ -185,21 +185,21 @@
   <Recipe Id="332" Match="Exact">
     <Amount>4</Amount>
     <Rows>
-      <Row>80,0,0</Row>
+      <Row>80,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="82" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>337,337,0</Row>
-      <Row>337,337,0</Row>
+      <Row>337,337</Row>
+      <Row>337,337</Row>
     </Rows>
   </Recipe>
   <Recipe Id="45" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>336,336,0</Row>
-      <Row>336,336,0</Row>
+      <Row>336,336</Row>
+      <Row>336,336</Row>
     </Rows>
   </Recipe>
   <Recipe Id="47" Match="Exact">
@@ -213,15 +213,15 @@
   <Recipe Id="24" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>12,12,0</Row>
-      <Row>12,12,0</Row>
+      <Row>12,12</Row>
+      <Row>12,12</Row>
     </Rows>
   </Recipe>
   <Recipe Id="91" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>86,0,0</Row>
-      <Row>50,0,0</Row>
+      <Row>86,0</Row>
+      <Row>50,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="271" Match="Exact">
@@ -387,8 +387,8 @@
   <Recipe Id="259" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>265,0,0</Row>
-      <Row>0,318,0</Row>
+      <Row>265,0</Row>
+      <Row>0,318</Row>
     </Rows>
   </Recipe>
   <Recipe Id="325" Match="Exact">
@@ -683,34 +683,34 @@
   <Recipe Id="72" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>5,5,0</Row>
+      <Row>5,5</Row>
     </Rows>
   </Recipe>
   <Recipe Id="70" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>1,1,0</Row>
+      <Row>1,1</Row>
     </Rows>
   </Recipe>
   <Recipe Id="77" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>1,0,0</Row>
-      <Row>1,0,0</Row>
+      <Row>1,0</Row>
+      <Row>1,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="76" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>331,0,0</Row>
-      <Row>280,0,0</Row>
+      <Row>331,0</Row>
+      <Row>280,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="69" Match="Exact">
     <Amount>1</Amount>
     <Rows>
-      <Row>280,0,0</Row>
-      <Row>4,0,0</Row>
+      <Row>280,0</Row>
+      <Row>4,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="25" Match="Exact">
@@ -842,19 +842,19 @@
   <Recipe Id="351:15" Match="Exact">
     <Amount>3</Amount>
     <Rows>
-      <Row>352,0,0</Row>
+      <Row>352,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="351:1" Match="Exact">
     <Amount>2</Amount>
     <Rows>
-      <Row>38,0,0</Row>
+      <Row>38,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="351:11" Match="Exact">
     <Amount>2</Amount>
     <Rows>
-      <Row>37,0,0</Row>
+      <Row>37,0</Row>
     </Rows>
   </Recipe>
   <Recipe Id="351:7" Match="Any">
@@ -938,73 +938,73 @@
   <Recipe Id="35:4" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:11,0</Row>
+      <Row>35,351:11</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:5" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:10,0</Row>
+      <Row>35,351:10</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:6" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:9,0</Row>
+      <Row>35,351:9</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:7" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:8,0</Row>
+      <Row>35,351:8</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:8" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:7,0</Row>
+      <Row>35,351:7</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:9" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:6,0</Row>
+      <Row>35,351:6</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:10" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:5,0</Row>
+      <Row>35,351:5</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:11" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:4,0</Row>
+      <Row>35,351:4</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:12" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:3,0</Row>
+      <Row>35,351:3</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:13" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:2,0</Row>
+      <Row>35,351:2</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:14" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351:1,0</Row>
+      <Row>35,351:1</Row>
     </Rows>
   </Recipe>
   <Recipe Id="35:15" Match="Any">
     <Amount>1</Amount>
     <Rows>
-      <Row>35,351,0</Row>
+      <Row>35,351</Row>
     </Rows>
   </Recipe>
 </Recipes>
