@@ -82,7 +82,7 @@ namespace Chraft.World.Blocks
             var world = block.World;
             Remove(block);
             FallingGravel fgBlock = new FallingGravel(world, new AbsWorldCoords(block.Coords.WorldX + 0.5, block.Coords.WorldY + 0.5, block.Coords.WorldZ + 0.5));
-            fgBlock.Start();
+            fgBlock.Start((int)Type);
             world.PhysicsBlocks.TryAdd(fgBlock.EntityId, fgBlock);
         }
     }

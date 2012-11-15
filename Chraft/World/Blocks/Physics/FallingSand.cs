@@ -35,7 +35,7 @@ namespace Chraft.World.Blocks.Physics
         {
             Type = Net.Packets.AddObjectVehiclePacket.ObjectType.FallingSand;
             BlockId = (byte) BlockData.Blocks.Sand;
-            Velocity = new Vector3(0, -0.4D, 0);
+            Velocity = new Vector3(0, -0.4D, 0);//TODO Corect Falling speed ?
         }
 
         public override void Simulate()

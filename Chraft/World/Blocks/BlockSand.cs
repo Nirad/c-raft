@@ -56,7 +56,7 @@ namespace Chraft.World.Blocks
         {
             Remove(block);
             var fsBlock = new FallingSand(block.World, new AbsWorldCoords(block.Coords.WorldX + 0.5, block.Coords.WorldY + 0.5, block.Coords.WorldZ + 0.5));
-            fsBlock.Start();
+            fsBlock.Start((int)Type);
             block.World.PhysicsBlocks.TryAdd(fsBlock.EntityId, fsBlock);
         }
     }
