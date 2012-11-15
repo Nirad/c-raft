@@ -307,7 +307,7 @@ namespace Chraft.Net
                 {
                     if (client != this)
                     {
-                        DestroyEntityPacket de = new DestroyEntityPacket { EntitiesId = new [] { _player.EntityId } };
+                        DestroyEntityPacket de = new DestroyEntityPacket {EntitiesCount=1, EntitiesId = new [] { _player.EntityId } };
                         de.Write();
                         byte[] data = de.GetBuffer();
                         client.Send_Sync(data);
