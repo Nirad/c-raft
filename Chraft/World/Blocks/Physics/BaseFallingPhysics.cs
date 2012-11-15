@@ -36,14 +36,9 @@ namespace Chraft.World.Blocks.Physics
             World = world;
             Position = pos;
             EntityId = world.Server.AllocateEntity();
-
-            CreateEntityPacket entity = new CreateEntityPacket { EntityId = EntityId };
-            World.Server.SendPacketToNearbyPlayers(World,
-                                                   UniversalCoords.FromAbsWorld(Position),
-                                                   entity);
         }
 
-        public virtual void Start()
+        public virtual void Start(int blockId)
         {
             if (IsPlaying)
                 return;
@@ -51,7 +46,7 @@ namespace Chraft.World.Blocks.Physics
                                              {
                                                  EntityId = EntityId,
                                                  Type = Type,
-                                                 FireBallThrowerEid = 0,
+                                                 FireBallThrowerEid = blockId,//TODO Block data here ???
                                                  X = Position.X,
                                                  Y = Position.Y,
                                                  Z = Position.Z

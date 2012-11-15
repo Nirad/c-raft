@@ -19,7 +19,7 @@ namespace Chraft.World.Blocks.Physics
 {
     interface IBlockPhysics
     {
-        void Start();
+        void Start(int blockId);
         void Simulate();
         void Stop(bool forceStop = false);
     }
