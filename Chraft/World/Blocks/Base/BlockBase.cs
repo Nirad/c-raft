@@ -235,19 +235,19 @@ namespace Chraft.World.Blocks.Base
             blocks.Add(UniversalCoords.FromWorld(block.Coords.WorldX, block.Coords.WorldY, block.Coords.WorldZ + 1));
             byte blockId = 0;
             byte blockMeta = 0;
-            foreach (var coords in blocks)
+            for(int i = 0;i < blocks.Count; i++)
             {
-                Chunk chunk = block.World.GetChunk(coords) as Chunk;
+                Chunk chunk = block.World.GetChunk(blocks[i]) as Chunk;
 
                 if (chunk == null)
                     break;
 
-                blockId = (byte)chunk.GetType(coords);
-                blockMeta = chunk.GetData(coords);
+                blockId = (byte)chunk.GetType(blocks[i]);
+                blockMeta = chunk.GetData(blocks[i]);
                 if (destroyed)
-                    BlockHelper.Instance.CreateBlockInstance(blockId).NotifyDestroy(entity, block, new StructBlock(coords, blockId, blockMeta, block.World));
+                    BlockHelper.Instance.CreateBlockInstance(blockId).NotifyDestroy(entity, block, new StructBlock(blocks[i], blockId, blockMeta, block.World));
                 else
-                    BlockHelper.Instance.CreateBlockInstance(blockId).NotifyPlace(entity, block, new StructBlock(coords, blockId, blockMeta, block.World));
+                    BlockHelper.Instance.CreateBlockInstance(blockId).NotifyPlace(entity, block, new StructBlock(blocks[i], blockId, blockMeta, block.World));
             }
         }
 
