@@ -116,6 +116,7 @@
     <Compile Include="Entity\Items\Base\ItemPlaceable.cs" />
     <Compile Include="Entity\Items\Base\ItemBaseHoe.cs" />
     <Compile Include="Entity\Items\Base\ItemBaseFood.cs" />
+    <Compile Include="Entity\Items\ItemTorch.cs" />
     <Compile Include="Entity\Items\ItemGrass.cs" />
     <Compile Include="Entity\Items\ItemDiamondBlock.cs" />
     <Compile Include="Entity\Items\ItemGravel.cs" />
