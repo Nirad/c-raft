@@ -215,6 +215,16 @@ namespace Chraft.Net
             _Stream.Write(bytes, 0, byteDim);
         }
 
+        /// <summary>
+        /// Call this method if you want write the same int array
+        /// </summary>
+        /// <param name="array">int[]</param>
+        public void WriteIntArray(int[] array)
+        {
+            foreach (int i in array)
+                Write(i);
+        }
+
         public void Write(byte[] buffer, int offset, int count)
         {
             _Stream.Write(buffer, offset, count);
