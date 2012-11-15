@@ -872,7 +872,7 @@ namespace Chraft.Net.Packets
             ThrownSnowball = 61,
             ThrownEgg = 62,
             FallingSand = 70,
-            FallingGravel = 71,
+            FallingGravel = 70,
             FishingFloat = 90,
         }
     }
@@ -1034,7 +1034,7 @@ namespace Chraft.Net.Packets
             SetCapacity(2 + (EntitiesCount * sizeof(int)));
 
             Writer.Write(EntitiesCount);
-            Writer.Write(EntitiesId);
+            Writer.WriteIntArray(EntitiesId);
         }
     }
 
