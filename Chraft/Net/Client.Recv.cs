@@ -523,6 +523,7 @@ namespace Chraft.Net
             byte type = (byte)chunk.GetType(coords);
             byte data = chunk.GetData(coords);
 
+            var block = new StructBlock(coords, type, data, player.World);
             switch (packet.Action)
             {
                 case PlayerDiggingPacket.DigAction.StartDigging:
@@ -535,22 +536,23 @@ namespace Chraft.Net
                     client.SendMessage(String.Format("Data: {0}", player.World.GetBlockData(oneUp)));
                     //this.SendMessage()
 #endif
-                    if (BlockHelper.Instance.IsSingleHit(type))
-                        goto case PlayerDiggingPacket.DigAction.FinishDigging;
+                    if (player.GameMode == GameMode.Creative || BlockHelper.Instance.IsSingleHit(type))
+                    {
+                        player.Inventory.ActiveItem.DestroyBlock(block);
+                    }
+                    else
+                    {
+                        client.ExpectedMiningEndTime = DateTime.Now; //TODO MayBe add MiningTime to block for prevention of hack
+                        client.ExpectedBlockToMinePosition = blockPosition;
+                    }
                     if (BlockHelper.Instance.CreateBlockInstance(type) is BlockLeaves && player.Inventory.ActiveItem.Type == (short)BlockData.Items.Shears)
                         goto case PlayerDiggingPacket.DigAction.FinishDigging;
-                    if (player.GameMode == GameMode.Creative)
-                        goto case PlayerDiggingPacket.DigAction.FinishDigging;
-
-                    client.ExpectedMiningEndTime = DateTime.Now; //TODO MayBe add MiningTime to block for prevention of hack
-                    client.ExpectedBlockToMinePosition = blockPosition;
                     break;
                 case PlayerDiggingPacket.DigAction.CancelledDigging:
                     break;
                 case PlayerDiggingPacket.DigAction.FinishDigging:
-                    if (client.ExpectedMiningEndTime > DateTime.Now || client.ExpectedBlockToMinePosition != blockPosition)
+                    if (client.ExpectedMiningEndTime >= DateTime.Now || client.ExpectedBlockToMinePosition != blockPosition)
                         return;
-                    var block = new StructBlock(coords, type, data, player.World);
                     player.Exhaustion += 25;
                     player.Inventory.ActiveItem.DestroyBlock(block);
                     break;
