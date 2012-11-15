@@ -202,6 +202,9 @@ namespace Chraft.Net
         public DateTime KeepAliveStart;
         public DateTime LastClientResponse = DateTime.Now;
 
+        internal DateTime ExpectedMiningEndTime;
+        internal AbsWorldCoords ExpectedBlockToMinePosition;
+
         private void KeepAliveTimer_Callback(object sender)
         {
             if (Running)

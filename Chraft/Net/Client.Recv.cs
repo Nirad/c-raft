@@ -513,6 +513,7 @@ namespace Chraft.Net
             var player = client.Owner;
 
             UniversalCoords coords = UniversalCoords.FromWorld(packet.X, packet.Y, packet.Z);
+            AbsWorldCoords blockPosition = new AbsWorldCoords(packet.X, packet.Y, packet.Z);
 
             Chunk chunk = player.World.GetChunk(coords) as Chunk;
 
@@ -540,10 +541,15 @@ namespace Chraft.Net
                         goto case PlayerDiggingPacket.DigAction.FinishDigging;
                     if (player.GameMode == GameMode.Creative)
                         goto case PlayerDiggingPacket.DigAction.FinishDigging;
+
+                    client.ExpectedMiningEndTime = DateTime.Now; //TODO MayBe add MiningTime to block for prevention of hack
+                    client.ExpectedBlockToMinePosition = blockPosition;
                     break;
                 case PlayerDiggingPacket.DigAction.CancelledDigging:
                     break;
                 case PlayerDiggingPacket.DigAction.FinishDigging:
+                    if (client.ExpectedMiningEndTime > DateTime.Now || client.ExpectedBlockToMinePosition != blockPosition)
+                        return;
                     var block = new StructBlock(coords, type, data, player.World);
                     player.Exhaustion += 25;
                     player.Inventory.ActiveItem.DestroyBlock(block);
