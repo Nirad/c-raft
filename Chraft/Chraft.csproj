@@ -200,7 +200,7 @@
     <Compile Include="Net\SocketAsyncEventArgsPool.cs" />
     <Compile Include="Net\StreamRole.cs" />
     <Compile Include="Permissions.cs" />
-    <Compile Include="Persistence\ClientSurrogate.cs" />
+    <Compile Include="Persistence\Player.cs" />
     <Compile Include="Plugins\Events\BlockEvent.cs" />
     <Compile Include="Plugins\PluginLogger.cs" />
     <Compile Include="Utils\BanSystem.cs" />

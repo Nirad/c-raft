@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chraft", "Chraft\Chraft.csproj", "{024D469C-C147-4BCF-8E17-1833AA8B34DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChraftUnitTests", "ChraftUnitTests\ChraftUnitTests.csproj", "{4396848A-2893-4337-941E-E0EB4EC18A12}"
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chraft.Utilities", "Chraft.Utilities\Chraft.Utilities.csproj", "{CCE78B48-1352-4746-A14E-DCB18BB5CCA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomChunkGenerator", "CustomGenerator\CustomChunkGenerator.csproj", "{ED06C549-38DC-47FC-8668-C8B72C2880AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldConverter", "WorldConverter\WorldConverter.csproj", "{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +142,21 @@ Global
 		{ED06C549-38DC-47FC-8668-C8B72C2880AF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ED06C549-38DC-47FC-8668-C8B72C2880AF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ED06C549-38DC-47FC-8668-C8B72C2880AF}.Release|x86.ActiveCfg = Release|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug Mono|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug Mono|Any CPU.Build.0 = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug Mono|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug Mono|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug Mono|x86.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A42F7320-9E63-4A23-BA18-1CFEA4FD7999}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

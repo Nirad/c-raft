@@ -20,7 +20,7 @@ using Chraft.Interfaces;
 namespace Chraft.Persistence
 {
     [Serializable]
-    public sealed class ClientSurrogate
+    public sealed class Player
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -30,9 +30,10 @@ namespace Chraft.Persistence
         public short Health { get; set; }
         public short Food { get; set; }
         public float FoodSaturation { get; set; }
-        public Inventory Inventory { get; set; }
         public byte GameMode { get; set; }
         public string DisplayName { get; set; }
         public int SightRadius { get; set; }
+        public int Experience { get; set; }
+        public Inventory Inventory { get; set; }
     }
 }
