@@ -7,6 +7,9 @@ using Chraft.Net;
 using Chraft.Persistence;
 using Chraft.Utilities.NBT;
 using Chraft.Utilities.Config;
+using System.Xml;
+using Chraft.Entity.Items.Base;
+using Chraft.Entity.Items;
 
 namespace Chraft.Utils
 {
@@ -22,9 +25,10 @@ namespace Chraft.Utils
             NBTFile nbt = null;
             try
             {
-                ClientSurrogate p = new ClientSurrogate();
+                Player p = new Player();
                 s = new FileStream(fileName, FileMode.Open);
                 nbt = NBTFile.OpenFile(s, 1);
+                p.DisplayName = Path.GetFileNameWithoutExtension(fileName);
                 foreach (KeyValuePair<string, NBTTag> sa in nbt.Contents)
                 {
                     switch (sa.Key)
@@ -49,6 +53,9 @@ namespace Chraft.Utils
                             break;
                         case "foodSaturationLevel":
                             p.FoodSaturation = sa.Value.Payload;
+                            break;
+                        case "XpTotal":
+                            p.Experience = sa.Value.Payload;
                             break;
                         case "Inventory":
                             Inventory inv = new Inventory();
@@ -77,9 +84,71 @@ namespace Chraft.Utils
             }
         }
 
-        private void SavePlayerXml(ClientSurrogate cs, string fileName)
+        private void SavePlayerXml(Player p, string fileName)
         {
-            XmlSerializer xml = new XmlSerializer(typeof(ClientSurrogate));
+            var doc = new XmlDocument();
+
+            var dec = doc.CreateXmlDeclaration("1.0", "utf-8", null);
+            doc.AppendChild(dec);
+            var root = doc.CreateElement("Player");
+
+            var arg = doc.CreateElement("X");
+            arg.InnerText = p.X.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Y");
+            arg.InnerText = p.Y.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Z");
+            arg.InnerText = p.Z.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Yaw");
+            arg.InnerText = p.Yaw.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Pitch");
+            arg.InnerText = p.Pitch.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Health");
+            arg.InnerText = p.Health.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Food");
+            arg.InnerText = p.Food.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("FoodSaturation");
+            arg.InnerText = p.FoodSaturation.ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("GameMode");
+            arg.InnerText = ((byte)p.GameMode).ToString();
+            root.AppendChild(arg);
+            arg = doc.CreateElement("DisplayName");
+            arg.InnerText = p.DisplayName;
+            root.AppendChild(arg);
+            arg = doc.CreateElement("SightRadius");
+            arg.InnerText = p.SightRadius == 0 ? ChraftConfig.MaxSightRadius.ToString() : p.SightRadius.ToString();//TODO use the max of the server or?
+            root.AppendChild(arg);
+            arg = doc.CreateElement("Experience");
+            arg.InnerText = p.Experience.ToString();
+            root.AppendChild(arg);
+
+            XmlElement inventoryNode = doc.CreateElement("Inventory");
+            ItemInventory item;
+            XmlElement itemDoc;
+
+            for (short i = 5; i <= 44; i++)
+            {
+                if (p.Inventory[i] == null || ItemHelper.IsVoid(p.Inventory[i]))
+                    continue;
+                item = p.Inventory[i];
+                itemDoc = doc.CreateElement("Item");
+                itemDoc.SetAttribute("Slot", i.ToString());
+                itemDoc.SetAttribute("Type", item.Type.ToString());
+                itemDoc.SetAttribute("Count", item.Count.ToString());
+                itemDoc.SetAttribute("Durability", item.Durability.ToString());
+                inventoryNode.AppendChild(itemDoc);
+            }
+
+            root.AppendChild(inventoryNode);
+            doc.AppendChild(root);
+
             string folder = ChraftConfig.PlayersFolder;
             string dataFile = folder + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(fileName) + ".xml";
 
@@ -88,12 +157,7 @@ namespace Chraft.Utils
             string file = dataFile + ".tmp";
             try
             {
-                using (FileStream tx = File.Create(file))
-                {
-                    xml.Serialize(tx, cs);
-                    tx.Flush();
-                    tx.Close();
-                }
+                doc.Save(file);
             }
             catch (IOException)
             {
