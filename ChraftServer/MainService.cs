@@ -86,6 +86,10 @@ namespace ChraftServer
         public void Run(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += UnhandledException_Handler;
+            
+
+            OnStart(args);
+
             //Configure service current directory and managers
             Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             if (!Directory.Exists("Converter"))
@@ -110,9 +114,6 @@ namespace ChraftServer
                     Console.WriteLine("Converting {0} to C#raft format", s);
                     a.ConvertPlayerNBT(s);
                 }
-
-                OnStart(args);
-
 
                 while (true)
                 {
