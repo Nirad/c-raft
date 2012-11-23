@@ -15,8 +15,35 @@ namespace WorldConverter
     {
         static void Main(string[] args)
         {
+            string srcdir = "Source";
+
+            string dstdir = "Destination";
+
+            string WorldName = "test";
+
+            if (!Directory.Exists(srcdir))  // if it doesn't exist, create
+            {
+                Directory.CreateDirectory(srcdir);
+                Console.WriteLine("Source directory created.");
+            }
+
+            if (!Directory.Exists(dstdir))  // if it doesn't exist, create
+            {
+                Directory.CreateDirectory(dstdir);
+                Console.WriteLine("Destination directory created.");
+            }
+
+            while (!Directory.Exists(srcdir + "/" + WorldName))
+            {
+                Console.WriteLine("Please put the world in the source directory!");
+                Console.Write("Enter the name of your world: ");
+                WorldName = Console.ReadLine();
+            }
+
+            Directory.CreateDirectory(dstdir + "/" + WorldName);
+            Console.WriteLine("Destination World directory created.");
             // Open our world
-            NbtWorld world = NbtWorld.Open(@"Convert/world");
+            NbtWorld world = NbtWorld.Open(srcdir + "/" + WorldName);
 
             // The chunk manager is more efficient than the block manager for
             // this purpose, since we'll inspect every block
@@ -26,8 +53,8 @@ namespace WorldConverter
             foreach (ChunkRef chunk in cm)
             {
                 Console.WriteLine("Processed Chunk {0},{1}", chunk.X, chunk.Z);
-                Console.WriteLine(block);
-                string DataFile = "Final" + "/x" + chunk.X + "_z" + chunk.Z + ".gz";
+                Console.WriteLine("{0:### ### ###} block writed", block);
+                string DataFile = dstdir+"/"+ WorldName + "/x" + chunk.X + "_z" + chunk.Z + ".gz";
                 Chunk c = new Chunk();
                 // You could hardcode your dimensions, but maybe some day they
                 // won't always be 16.  Also the CLR is a bit stupid and has
@@ -47,8 +74,12 @@ namespace WorldConverter
                         {
                             var type = chunk.Blocks.GetID(x, y, z);
                             var data = chunk.Blocks.GetData(x, y, z);
+                            var light = chunk.Blocks.GetBlockLight(x,y,z);
+                            var skylight = chunk.Blocks.GetSkyLight(x,y,z);
+                            c.SetSkyLight(x, y, z, (byte)skylight);
                             c.SetType(x, y, z, (BlockData.Blocks)type);
                             c.SetData(x, y, z, (byte)data);
+                            c.SetBlockLight(x, y, z, (byte)light);
                             block++;
                         }
                     }
@@ -59,7 +90,7 @@ namespace WorldConverter
                 {
                     zip.WriteByte(0); // version
 
-                    zip.WriteByte(1);//light
+                    zip.WriteByte(0);//light
                     for (int x = 0; x < 16; ++x)
                     {
                         for (int z = 0; z < 16; ++z)
@@ -100,9 +131,7 @@ namespace WorldConverter
                     }
 
                     zip.Write(c.Light.Data, 0, Chunk.HALFSIZE);
-
                     zip.Write(c.SkyLight.Data, 0, Chunk.HALFSIZE);
-
                     zip.Flush();
                 }
                 finally
@@ -121,6 +150,7 @@ namespace WorldConverter
                     }
                 }
             }
+            Console.WriteLine("An amazing number of {0:### ### ###} block writed!", block);
             Console.ReadLine();
         }
     }
