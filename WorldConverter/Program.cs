@@ -53,7 +53,7 @@ namespace WorldConverter
             foreach (ChunkRef chunk in cm)
             {
                 Console.WriteLine("Processed Chunk {0},{1}", chunk.X, chunk.Z);
-                Console.WriteLine("{0:### ### ###} block writed", block);
+                Console.WriteLine("{0:# ### ### ###} block writed", block);
                 string DataFile = dstdir+"/"+ WorldName + "/x" + chunk.X + "_z" + chunk.Z + ".gz";
                 Chunk c = new Chunk();
                 // You could hardcode your dimensions, but maybe some day they
@@ -150,7 +150,7 @@ namespace WorldConverter
                     }
                 }
             }
-            Console.WriteLine("An amazing number of {0:### ### ###} block writed!", block);
+            Console.WriteLine("An amazing number of {0:# ### ### ###} block writed!", block);
             Console.ReadLine();
         }
     }
